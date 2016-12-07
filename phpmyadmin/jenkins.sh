@@ -22,13 +22,7 @@ sed -i "s|__DOCKER_IMAGE_NAME__|${IMAGE_NAME}|g" marathon.json.tmp
 
 sed -i "s|__APP_ID__|${APP_ID}|g" marathon.json.tmp
 sed -i "s|__HAPROXY_VHOST__|${HAPROXY_VHOST}|g" marathon.json.tmp
-sed -i "s|__INSTANCE_RAM__|${INSTANCE_RAM}|g" marathon.json.tmp
-sed -i "s|__INSTANCE_CPU__|${INSTANCE_CPU}|g" marathon.json.tmp
-sed -i "s|__INSTANCE_DISK__|${INSTANCE_DISK}|g" marathon.json.tmp
-sed -i "s|__INSTANCE_NUMBER__|${INSTANCE_NUMBER}|g" marathon.json.tmp
 
-sed -i "s|__PMA_USER__|${PMA_USER}|g" marathon.json.tmp
-sed -i "s|__PMA_PASSWORD__|${database_password}|g" marathon.json.tmp
 sed -i "s|__PMA_HOST__|${PMA_HOST}|g" marathon.json.tmp
 sed -i "s|__PMA_PORT__|${PMA_PORT}|g" marathon.json.tmp
 
