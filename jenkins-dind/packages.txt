@@ -1,0 +1,20 @@
+	
+build timeout plugin
+	
+Credentials Binding Plugin
+	
+Timestamper
+	
+Workspace Cleanup Plugin
+	
+Pipeline
+	
+GitHub Organization Folder Plugin
+
+Green Balls
+	
+Mask Passwords Plugin
+	
+Docker Slaves Plugin
+
+Copy project link plugin
