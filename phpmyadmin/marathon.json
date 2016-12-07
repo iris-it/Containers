@@ -5,7 +5,7 @@
     "cpus": 0.25,
     "mem": 64,
     "disk": 0,
-    "instances": __INSTANCE_NUMBER__,
+    "instances": 1,
     "constraints": [
       [
         "hostname",
@@ -20,7 +20,6 @@
         "portMappings": [
           {
             "containerPort": 80,
-            "servicePort": __SERVICE_PORT__,
             "protocol": "tcp"
           }
         ],
