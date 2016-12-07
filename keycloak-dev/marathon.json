@@ -1,28 +1,36 @@
-[{
-	"id": "__APP_ID__",
-	"cpus": __INSTANCE_CPU__,
-	"mem": __INSTANCE_RAM__,
-	"disk": __INSTANCE_DISK__,
-	"instances": __INSTANCE_NUMBER__,
-	"constraints": [["hostname", "UNIQUE"]],
-	"container": {
-		"type": "DOCKER",
-		"docker": {
-			"image": "__DOCKER_IMAGE_NAME__",
-			"network": "BRIDGE",
-			"portMappings": [{
-				"containerPort": 8080,
-				"protocol": "tcp"
-			}],
-			"privileged": true,
-			"forcePullImage": true
-		}
-	},
-	"env": {
-		"KEYCLOAK_USER": "__KEYCLOAK_USER__",
-		"KEYCLOAK_PASSWORD": "__KEYCLOAK_PASSWORD__"
-	},
-	"healthChecks": [
+[
+  {
+    "id": "__APP_ID__",
+    "cpus": __INSTANCE_CPU__,
+    "mem": __INSTANCE_RAM__,
+    "disk": __INSTANCE_DISK__,
+    "instances": __INSTANCE_NUMBER__,
+    "constraints": [
+      [
+        "hostname",
+        "UNIQUE"
+      ]
+    ],
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "__DOCKER_IMAGE_NAME__",
+        "network": "BRIDGE",
+        "portMappings": [
+          {
+            "containerPort": 8080,
+            "protocol": "tcp"
+          }
+        ],
+        "privileged": true,
+        "forcePullImage": true
+      }
+    },
+    "env": {
+      "KEYCLOAK_USER": "__KEYCLOAK_USER__",
+      "KEYCLOAK_PASSWORD": "__KEYCLOAK_PASSWORD__"
+    },
+    "healthChecks": [
       {
         "protocol": "TCP",
         "portIndex": 0,
@@ -32,11 +40,9 @@
         "maxConsecutiveFailures": 30
       }
     ],
-	"labels": {
-		"HAPROXY_GROUP": "external",
-		"HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
-	},
-	"uris": [
-		"file:///var/data/irisit/private/docker/docker.tar.gz"
-	]
-}]
+    "labels": {
+      "HAPROXY_GROUP": "external",
+      "HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
+    }
+  }
+]

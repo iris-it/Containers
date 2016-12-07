@@ -1,35 +1,45 @@
-[{
-	"id": "__APP_ID__",
-	"cpus": __INSTANCE_CPU__,
-	"mem": __INSTANCE_RAM__,
-	"disk": __INSTANCE_DISK__,
-	"instances": __INSTANCE_NUMBER__,
-	"constraints": [["hostname", "UNIQUE"]],
-	"container": {
-		"type": "DOCKER",
-		"volumes": [{
-			"containerPath": "/var/www/html",
-			"hostPath": "__HOST_PATH__",
-			"mode": "RW"
-		}],
-		"docker": {
-			"image": "__DOCKER_IMAGE_NAME__",
-			"network": "BRIDGE",
-			"portMappings": [{
-				"containerPort": 80,
-				"protocol": "tcp"
-			}],
-			"privileged": true,
-			"forcePullImage": true
-		}
-	},
-	"env": {
-		"WORDPRESS_DB_NAME": "__WORDPRESS_DB_NAME__",
-		"WORDPRESS_DB_HOST": "__WORDPRESS_DB_HOST__",
-		"WORDPRESS_DB_PASSWORD": "__WORDPRESS_DB_PASSWORD__",
-		"WORDPRESS_DB_USER": "__WORDPRESS_DB_USER__"
-	},
-	"healthChecks": [
+[
+  {
+    "id": "__APP_ID__",
+    "cpus": __INSTANCE_CPU__,
+    "mem": __INSTANCE_RAM__,
+    "disk": __INSTANCE_DISK__,
+    "instances": __INSTANCE_NUMBER__,
+    "constraints": [
+      [
+        "hostname",
+        "UNIQUE"
+      ]
+    ],
+    "container": {
+      "type": "DOCKER",
+      "volumes": [
+        {
+          "containerPath": "/var/www/html",
+          "hostPath": "__HOST_PATH__",
+          "mode": "RW"
+        }
+      ],
+      "docker": {
+        "image": "__DOCKER_IMAGE_NAME__",
+        "network": "BRIDGE",
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "protocol": "tcp"
+          }
+        ],
+        "privileged": true,
+        "forcePullImage": true
+      }
+    },
+    "env": {
+      "WORDPRESS_DB_NAME": "__WORDPRESS_DB_NAME__",
+      "WORDPRESS_DB_HOST": "__WORDPRESS_DB_HOST__",
+      "WORDPRESS_DB_PASSWORD": "__WORDPRESS_DB_PASSWORD__",
+      "WORDPRESS_DB_USER": "__WORDPRESS_DB_USER__"
+    },
+    "healthChecks": [
       {
         "protocol": "TCP",
         "portIndex": 0,
@@ -39,11 +49,9 @@
         "maxConsecutiveFailures": 30
       }
     ],
-	"labels": {
-		"HAPROXY_GROUP": "external",
-		"HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
-	},
-	"uris": [
-		"file:///var/data/irisit/private/docker/docker.tar.gz"
-	]
-}]
+    "labels": {
+      "HAPROXY_GROUP": "external",
+      "HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
+    }
+  }
+]

@@ -1,47 +1,51 @@
-[{
-  "id": "__APP_ID__",
-  "cmd": null,
-  "cpus": 0.25,
-  "mem": 64,
-  "disk": 0,
-  "instances": __INSTANCE_NUMBER__,
-  "constraints": [["hostname", "UNIQUE"]],
-  "container": {
-    "type": "DOCKER",
-    "docker": {
-      "image": "__DOCKER_IMAGE_NAME__",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 80,
-          "servicePort": __SERVICE_PORT__,
-          "protocol": "tcp"
-        }
-      ],
-      "privileged": false,
-      "forcePullImage": true
+[
+  {
+    "id": "__APP_ID__",
+    "cmd": null,
+    "cpus": 0.25,
+    "mem": 64,
+    "disk": 0,
+    "instances": __INSTANCE_NUMBER__,
+    "constraints": [
+      [
+        "hostname",
+        "UNIQUE"
+      ]
+    ],
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "__DOCKER_IMAGE_NAME__",
+        "network": "BRIDGE",
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "servicePort": __SERVICE_PORT__,
+            "protocol": "tcp"
+          }
+        ],
+        "privileged": false,
+        "forcePullImage": true
+      }
+    },
+    "env": {
+      "PMA_HOST": "__PMA_HOST__",
+      "PMA_PORT": "__PMA_PORT__"
+    },
+    "healthChecks": [
+      {
+        "protocol": "TCP",
+        "portIndex": 0,
+        "gracePeriodSeconds": 300,
+        "intervalSeconds": 10,
+        "timeoutSeconds": 30,
+        "maxConsecutiveFailures": 10,
+        "ignoreHttp1xx": false
+      }
+    ],
+    "labels": {
+      "HAPROXY_GROUP": "external",
+      "HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
     }
-  },
-  "env": {
-    "PMA_HOST": "__PMA_HOST__",
-    "PMA_PORT": "__PMA_PORT__"
-  },
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 30,
-      "maxConsecutiveFailures": 10,
-      "ignoreHttp1xx": false
-    }
-  ],
-  "labels": {
-    "HAPROXY_GROUP": "external",
-    "HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
-  },
-	"uris": [
-		"file:///var/data/irisit/private/docker/docker.tar.gz"
-	]
-}]
+  }
+]
