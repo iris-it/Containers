@@ -32,6 +32,8 @@ USER root
 
 RUN dos2unix /entrypoint.sh
 
+RUN chmod a+x /entrypoint.sh
+
 RUN yum erase -y dos2unix && yum clean all
 
 USER jboss
