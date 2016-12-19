@@ -34,3 +34,5 @@ VOLUME ['/var/www']
 
 # Expose the ports for nginx
 EXPOSE 80
+
+
