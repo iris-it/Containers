@@ -2,6 +2,8 @@ FROM ubuntu:xenial
 
 MAINTAINER Alexandre Mangin <amangin@irisit.fr>
 
+ENV TERM xterm
+
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install -y \

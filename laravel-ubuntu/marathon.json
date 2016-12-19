@@ -1,0 +1,48 @@
+[
+  {
+    "id": "__APP_ID__",
+    "cpus": __INSTANCE_CPU__,
+    "mem": __INSTANCE_RAM__,
+    "disk": __INSTANCE_DISK__,
+    "instances": __INSTANCE_NUMBER__,
+    "constraints": [
+      [
+        "hostname",
+        "UNIQUE"
+      ]
+    ],
+    "container": {
+      "type": "DOCKER",
+      "docker": {
+        "image": "__DOCKER_IMAGE_NAME__",
+        "network": "BRIDGE",
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "protocol": "tcp"
+          }
+        ],
+        "privileged": false,
+        "forcePullImage": true
+      }
+    },
+    "env": {
+      "APP_DEBUG": "false",
+      "APP_URL": "__HAPROXY_VHOST__"
+    },
+    "healthChecks": [
+      {
+        "protocol": "TCP",
+        "portIndex": 0,
+        "gracePeriodSeconds": 120,
+        "intervalSeconds": 10,
+        "timeoutSeconds": 60,
+        "maxConsecutiveFailures": 30
+      }
+    ],
+    "labels": {
+      "HAPROXY_GROUP": "external",
+      "HAPROXY_0_VHOST": "__HAPROXY_VHOST__"
+    }
+  }
+]
