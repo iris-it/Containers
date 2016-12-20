@@ -27,8 +27,7 @@
       }
     },
     "env": {
-      "APP_DEBUG": "false",
-      "APP_URL": "__HAPROXY_VHOST__"
+      "APP_DEBUG": "false"
     },
     "healthChecks": [
       {
