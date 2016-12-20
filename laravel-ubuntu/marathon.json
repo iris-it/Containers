@@ -22,16 +22,16 @@
             "protocol": "tcp"
           }
         ],
-        "volumes": [
-          {
-            "containerPath": "/var/www",
-            "hostPath": "__HOST_PATH__",
-            "mode": "RW"
-          }
-        ],
         "privileged": false,
         "forcePullImage": true
-      }
+      },
+      "volumes": [
+        {
+          "containerPath": "/var/www",
+          "hostPath": "__HOST_PATH__",
+          "mode": "RW"
+        }
+      ]
     },
     "env": {
       "APP_DEBUG": "false"
